@@ -4,6 +4,7 @@ import Homepage from "../../features/home/Homepage";
 import ActivityDashboard from "../../features/activities/dashboard/ActivityDashboard";
 import ActivityForm from "../../features/activities/form/ActivityForm";
 import ActivityDetailsPage from "../../features/activities/details/ActivityDetailPage";
+import Counter from "../../features/counter/counter";
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ export const router = createBrowserRouter([
       { path: "activities/:id", element: <ActivityDetailsPage /> },
       { path: "createActivity", element: <ActivityForm key="create" /> },
       { path: "manage/:id", element: <ActivityForm /> },
+      { path: "counter", element: <Counter /> },
     ],
   },
 ]);
