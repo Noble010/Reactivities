@@ -8,9 +8,12 @@ import { NavLink } from "react-router";
 import MenuItemLink from "../shared/components/MenuItemLink";
 import { useStore } from "../../lib/hooks/useStore";
 import { Observer } from "mobx-react-lite";
+import { useAccount } from "../../lib/hooks/useAccount";
+import UserMenu from "./UserMenu";
 
 export default function NavBar() {
   const { uiStore } = useStore();
+  const { currentUser } = useAccount();
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar
@@ -18,8 +21,8 @@ export default function NavBar() {
         sx={{
           backgroundImage:
             "linear-gradient(135deg, #182a73 0%, #218aae 69%, #20a7ac 89%)",
-        position:'relative'}}
-        
+          position: "relative",
+        }}
       >
         <Container maxWidth={"xl"}>
           <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -37,11 +40,19 @@ export default function NavBar() {
             </Box>
             <Box sx={{ display: "flex" }}>
               <MenuItemLink to="/activities">Activities</MenuItemLink>
-              <MenuItemLink to="/createActivity">Create Activity</MenuItemLink>
               <MenuItemLink to="/counter">Counter</MenuItemLink>
               <MenuItemLink to="/errors">Errors</MenuItemLink>
             </Box>
-            <MenuItem>User Menu</MenuItem>
+            <Box display={"flex"} alignItems={"center"}>
+              {currentUser ? (
+                <UserMenu/>
+              ) : (
+                <>
+                  <MenuItemLink to="/login">Login</MenuItemLink>
+                  <MenuItemLink to="/register">Sign Up</MenuItemLink>
+                </>
+              )}
+            </Box>
           </Toolbar>
         </Container>
         <Observer>

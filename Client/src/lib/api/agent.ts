@@ -10,6 +10,7 @@ const sleep = (delay: number) => {
 };
 const agent = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
 });
 
 agent.interceptors.request.use((config) => {
@@ -51,7 +52,7 @@ agent.interceptors.response.use(
         break;
       case 500:
         toast.error("Server error");
-        router.navigate('/server-error', {state:{error:data}})
+        router.navigate("/server-error", { state: { error: data } });
         break;
 
       default:
