@@ -56,7 +56,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Activities");
+                    b.ToTable("Activities", (string)null);
                 });
 
             modelBuilder.Entity("Domain.User", b =>
