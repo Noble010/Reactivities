@@ -10,5 +10,5 @@ public class User : IdentityUser
     public string? ImageUrl { get; set; }
 
     //nav collection
-    public ICollection<Activity> Activities { get; set; } = [];
+    public ICollection<ActivityAttendee> Activities { get; set; } = [];
 }

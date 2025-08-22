@@ -17,3 +17,5 @@ public class Result<T>
         Code = code 
     };
 }
+
+
